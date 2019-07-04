@@ -1,17 +1,13 @@
-from django.shortcuts import render
-
-from rest_framework import viewsets
-
-import os, sys
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0,BASE_DIR)
-from events_api.models import Event
-from events_api.serializers import EventSerializer
+from rest_framework.generics import UpdateAPIView
+from .serializers import EventSerializer
+from .models import Event
 
 
-class EventViewSet(viewsets.ModelViewSet):
+class EventUpdateView(UpdateAPIView):
     """
-    API endpoint that allows users to be viewed or edited.
+    API endpoint that allows an event to be edited.
+    Use the `PATCH` method for partial update, or `PUT` for updating all required fields 
+    (i.e. `name`, `organization`, `start_date`, `cost` - see EventSerializer's fields).
     """
-    queryset = Event.objects.all()
     serializer_class = EventSerializer
+    queryset = Event.objects.all()

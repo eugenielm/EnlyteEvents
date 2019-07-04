@@ -17,17 +17,7 @@ Including another URLconf
 from django.urls import include, path
 from rest_framework import routers
 
-import os, sys
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-sys.path.insert(0,BASE_DIR)
-from events_api import views
 
-router = routers.DefaultRouter()
-router.register(r'events', views.EventViewSet)
-
-# Wire up our API using automatic URL routing.
-# Additionally, we include login URLs for the browsable API.
 urlpatterns = [
-    path('api/', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path('api/', include('events_api.urls')),
 ]
