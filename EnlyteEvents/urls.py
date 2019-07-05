@@ -15,7 +15,6 @@ Including another URLconf
 """
 # https://www.django-rest-framework.org/tutorial/quickstart/
 from django.urls import include, path
-from rest_framework import routers
 
 
 urlpatterns = [
