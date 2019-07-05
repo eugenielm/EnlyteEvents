@@ -1,0 +1,114 @@
+info:
+  description: ''
+  title: ''
+  version: ''
+openapi: 3.0.0
+paths:
+  /api/events/:
+    get:
+      description: 'Returns Event instances matching a search against all Event''s
+        fields (except `initial_id`)
+
+        and/or filtering Event instances by:
+
+        `name`, `organization`, `exact_cost`, `max_cost`, `exact_date`, `exact_date`,
+        `before_date`.
+
+        Returns all Event instances if no search/filter is applied.'
+      operationId: events_list
+      parameters:
+      - in: query
+        name: page
+        schema:
+          description: A page number within the paginated result set.
+          title: Page
+          type: integer
+      - in: query
+        name: name
+        schema:
+          description: ''
+          title: ''
+          type: string
+      - in: query
+        name: organization
+        schema:
+          description: ''
+          title: ''
+          type: string
+      - in: query
+        name: exact_cost
+        schema:
+          description: ''
+          title: ''
+          type: number
+      - in: query
+        name: max_cost
+        schema:
+          description: ''
+          title: ''
+          type: number
+      - in: query
+        name: exact_date
+        schema:
+          description: ''
+          title: ''
+          type: string
+      - in: query
+        name: from_date
+        schema:
+          description: ''
+          title: ''
+          type: string
+      - in: query
+        name: before_date
+        schema:
+          description: ''
+          title: ''
+          type: string
+      - in: query
+        name: search
+        schema:
+          description: A search term.
+          title: Search
+          type: string
+      - in: query
+        name: ordering
+        schema:
+          description: Which field to use when ordering the results.
+          title: Ordering
+          type: string
+      tags:
+      - events
+  /api/events/{id}/:
+    patch:
+      description: "API endpoint that allows an event to be edited.\nUse the `PATCH`\
+        \ method for partial update, or `PUT` for updating all required fields \n\
+        (EventSerializer's fields, i.e. `name`, `organization`, `start_date`, `cost`)."
+      operationId: events_partial_update
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          description: A unique integer value identifying this event.
+          title: ID
+          type: integer
+      tags:
+      - events
+    put:
+      description: "API endpoint that allows an event to be edited.\nUse the `PATCH`\
+        \ method for partial update, or `PUT` for updating all required fields \n\
+        (EventSerializer's fields, i.e. `name`, `organization`, `start_date`, `cost`)."
+      operationId: events_update
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          description: A unique integer value identifying this event.
+          title: ID
+          type: integer
+      tags:
+      - events
+servers:
+- url: ''

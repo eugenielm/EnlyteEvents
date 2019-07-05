@@ -6,3 +6,5 @@ psycopg2-binary==2.8.3
 eventbrite==3.3.3
 requests==2.22.0
 python-dateutil==2.8.0
+coreapi==2.3.3
+pyyaml==5.1.1
